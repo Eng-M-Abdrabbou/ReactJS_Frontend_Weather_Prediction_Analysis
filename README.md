@@ -50,7 +50,7 @@ This repository contains the React frontend for the Weather Application. It prov
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-frontend-repo-url>
+    git clone https://github.com/Eng-M-Abdrabbou/ReactJS_Frontend_Weather_Prediction_Analysis.git
     cd weather-frontend
     ```
 
