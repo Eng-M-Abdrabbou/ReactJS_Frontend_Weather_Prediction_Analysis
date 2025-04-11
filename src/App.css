@@ -1,0 +1,403 @@
+/* Reset and Base Styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #f4f7f6; /* Slightly greener background */
+  min-height: 100%;
+}
+
+/* Main Application Container */
+.App {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 1000px; /* *** ADDED MAX-WIDTH FOR CONTENT AREA *** */
+  min-height: 100vh;
+  padding: 30px 5%; /* Vertical padding, % based horizontal padding */
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; /* Center the container */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Optional subtle shadow */
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 35px; /* More space below title */
+  font-weight: 600;
+  font-size: 2em; /* Larger title */
+}
+
+/* Search Bar Styling */
+.search-bar-container {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 40px; /* More space below search */
+   width: 100%;
+   /* padding: 0 10px; */ /* Removed, padding is on .App */
+}
+
+.search-bar-form {
+   display: flex;
+   gap: 12px; /* Slightly more gap */
+   width: 100%;
+   max-width: 650px; /* Limit search bar width */
+}
+
+.search-bar-form input[type="text"] {
+   padding: 14px 18px; /* Larger padding */
+   border: 1px solid #ccc; /* Slightly darker border */
+   border-radius: 6px; /* More rounded */
+   flex-grow: 1;
+   font-size: 1.05rem;
+   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.search-bar-form input[type="text"]:focus {
+    outline: none;
+    border-color: #2980b9; /* Different focus blue */
+    box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15); /* Adjusted glow */
+}
+
+.search-bar-form button {
+   padding: 14px 28px; /* Larger padding */
+   background-color: #2980b9; /* Matching blue */
+   color: white;
+   border: none;
+   border-radius: 6px;
+   cursor: pointer;
+   transition: background-color 0.2s ease;
+   font-size: 1.05rem;
+   font-weight: 500;
+   white-space: nowrap;
+}
+
+.search-bar-form button:hover:not(:disabled) {
+   background-color: #2c3e50; /* Darker blue on hover */
+}
+
+.search-bar-form button:disabled {
+   background-color: #bdc3c7; /* Softer disabled grey */
+   cursor: not-allowed;
+}
+
+/* Main Content Grid Area - *** UPDATED FOR VERTICAL LAYOUT *** */
+.main-content-area {
+    flex-grow: 1;
+    display: grid;
+    /* --- CHANGE: Explicitly set ONE column --- */
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 35px; /* Increase gap between vertical cards */
+    width: 100%;
+    margin-top: 20px;
+    /* padding: 0 10px; */ /* Removed, padding is on .App */
+}
+
+/* General Card Styling - Ensure cards fill the single column */
+.weather-info-card {
+  background-color: #ffffff; /* White cards */
+  padding: 30px; /* More padding inside cards */
+  border-radius: 10px; /* More pronounced rounding */
+  border: 1px solid #e0e0e0; /* Lighter border */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); /* Refined shadow */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Keep this */
+  /* Cards will naturally take the width of the single grid column */
+}
+
+.weather-info-card h2,
+.weather-info-card h3,
+.weather-info-card h4 {
+  margin-top: 0;
+  color: #34495e;
+  margin-bottom: 25px; /* More space below headings */
+  text-align: left; /* *** ALIGN HEADINGS LEFT *** */
+  border-bottom: 2px solid #ecf0f1; /* Thicker, lighter border */
+  padding-bottom: 12px;
+  font-size: 1.2em; /* Base size */
+  font-weight: 600;
+}
+
+.weather-info-card h2 {
+    font-size: 1.4em; /* Larger main titles */
+}
+.weather-info-card h4 { /* Sub-headings */
+    font-size: 1.0em;
+    margin-top: 20px; /* Space above sub-headings like Components */
+    margin-bottom: 15px;
+    border-bottom: none; /* No border for sub-headings */
+    color: #525e6d;
+}
+
+.weather-info-card p {
+   margin: 8px 0;
+   color: #4a4a4a; /* Darker text */
+   font-size: 1rem; /* Slightly larger base text */
+   line-height: 1.7;
+}
+ .weather-info-card p > strong {
+    color: #2c3e50; /* Match heading blue */
+    margin-right: 8px;
+    font-weight: 600;
+ }
+
+/* Current Weather Specific Styles - Arrange data */
+.current-weather-card .current-summary {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between icon/temp and description */
+    margin-bottom: 30px; /* Space below summary */
+    flex-wrap: wrap; /* Allow wrapping on smaller widths if needed */
+}
+
+.current-weather-card .current-temp-icon {
+    display: flex;
+    flex-direction: column; /* Stack temp and icon */
+    align-items: center;
+    text-align: center;
+}
+
+.current-weather-card .weather-icon {
+    width: 70px; /* Slightly smaller icon */
+    height: 70px;
+    margin-bottom: -5px; /* Pull temp closer */
+    order: -1; /* Show icon above temp */
+}
+
+.current-weather-card .temperature {
+    font-size: 4.0em; /* Even larger temp */
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1;
+}
+
+.current-weather-card .current-desc-feels {
+    flex: 1; /* Allow this section to grow */
+    text-align: left;
+}
+
+ .current-weather-card .description {
+    font-size: 1.5em; /* Larger description */
+    font-style: normal; /* Remove italic */
+    font-weight: 500;
+    color: #333;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    text-align: left;
+ }
+ .current-weather-card .feels-like {
+     font-size: 1.1em;
+     color: #555;
+     margin: 0;
+     text-align: left;
+ }
+
+
+ .current-weather-card .details-grid {
+    display: grid;
+    /* Use more columns if space allows, define min width */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px 25px; /* Row gap, Column gap */
+    margin-top: 15px;
+    padding-top: 20px; /* Space above details */
+    border-top: 1px solid #ecf0f1; /* Separator line */
+ }
+  /* Style individual detail items */
+ .current-weather-card .details-grid p {
+     margin: 4px 0;
+     display: flex; /* Align label and value */
+     justify-content: space-between;
+     border-bottom: 1px dotted #eee; /* Subtle separator */
+     padding-bottom: 4px;
+ }
+ .current-weather-card .details-grid p strong {
+      margin-right: 10px;
+      color: #555f6d; /* Softer label color */
+      font-weight: 500;
+ }
+ .current-weather-card .details-grid p span { /* Wrap value in span */
+      font-weight: 500;
+      color: #333c48; /* Darker value color */
+ }
+
+
+/* Map Card Styles */
+.map-card {
+   padding: 0;
+   min-height: 400px; /* Larger map */
+   border-radius: 10px; /* Match card rounding */
+   overflow: hidden; /* Crucial for map */
+}
+.map-container {
+  height: 100%;
+  width: 100%;
+  min-height: 400px; /* Ensure container itself has height */
+  /* border-radius: 10px; */ /* Map itself shouldn't need rounding if card handles it */
+}
+
+/* Forecast Card Styles */
+.forecast-card h4 { /* Day heading */
+     margin-top: 15px;
+     margin-bottom: 10px;
+     border-bottom: 1px solid #dde;
+     padding-bottom: 8px;
+     font-size: 1.1em; /* Slightly larger day */
+     color: #34495e;
+     text-align: left;
+ }
+
+.forecast-list { /* Container for 3-hour items for a day */
+    display: grid; /* *** Use GRID for forecast items *** */
+    /* Define columns: Auto-fit based on item width */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px; /* Gap between items */
+    padding: 10px 0;
+ }
+
+  .forecast-item { /* Style individual 3-hour forecast item */
+    /* No flex needed when using grid */
+    /* flex: 0 1 115px; */
+    text-align: center;
+    padding: 15px 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px; /* Slightly more rounding */
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+   .forecast-item:hover {
+     transform: translateY(-3px); /* More lift */
+     box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* More shadow */
+   }
+
+  .forecast-item img { width: 45px; height: 45px; margin: 5px auto; }
+  .forecast-item p { margin: 4px 0; font-size: 0.9em; word-wrap: break-word; }
+  .forecast-item .temp { font-weight: bold; font-size: 1.2em; color: #34495e; } /* Larger temp */
+  .forecast-item .time { font-size: 0.9em; color: #6b7280; margin-bottom: 8px; font-weight: 600;} /* Bold time */
+
+
+/* Air Quality Card Specifics */
+.aqi-display {
+    display: flex; /* Align value and level side-by-side */
+    align-items: center;
+    justify-content: center; /* Center items */
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Allow wrap on small screens */
+}
+.aqi-value {
+    font-size: 2.8em; /* Larger AQI number */
+    font-weight: bold;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border-width: 2px;
+    border-style: solid;
+    display: inline-block;
+    line-height: 1; /* Adjust line height */
+}
+.aqi-level {
+    font-size: 1.3em; /* Larger level text */
+    font-weight: 500;
+    margin-top: 0; /* Remove top margin */
+}
+.aqi-components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* More space for components */
+    gap: 8px 20px;
+    border-top: 1px solid #ecf0f1; /* Separator */
+    padding-top: 15px; /* Space above components */
+}
+.aqi-components-grid p {
+    margin: 4px 0;
+    font-size: 0.95em;
+    display: flex;
+    justify-content: space-between;
+}
+.aqi-components-grid strong {
+    color: #555f6d;
+    font-weight: 500;
+}
+.aqi-components-grid span { /* Value */
+     font-weight: 500;
+      color: #333c48;
+}
+
+
+/* Loading Indicator */
+.loading-indicator {
+    text-align: center;
+    padding: 80px; /* More padding */
+    font-size: 1.4em;
+    color: #6b7280;
+    font-style: italic;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #c0392b;
+  background-color: #fbebeb;
+  border: 1px solid #f5c6cb;
+  padding: 18px 25px; /* More padding */
+  border-radius: 6px;
+  text-align: center;
+  margin: 30px 0; /* More margin, only vertical */
+  width: 100%; /* Fill width */
+  font-weight: 500;
+  font-size: 1.05em;
+}
+
+
+/* Responsive Adjustments - Simplified as vertical layout works well */
+@media (max-width: 600px) {
+    .App {
+        padding: 20px 4%; /* Adjust padding */
+    }
+     h1 {
+        font-size: 1.6em;
+    }
+     .search-bar-form {
+        flex-direction: column; /* Stack search elements */
+        gap: 15px;
+    }
+    .main-content-area {
+        gap: 25px; /* Slightly reduce gap */
+    }
+    .weather-info-card {
+        padding: 20px; /* Less padding inside cards */
+    }
+    .current-weather-card .temperature {
+        font-size: 3.0em;
+    }
+     .current-weather-card .description {
+        font-size: 1.2em;
+    }
+     .current-weather-card .details-grid {
+        grid-template-columns: 1fr; /* Force single column */
+     }
+      .forecast-list {
+         grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); /* Adjust forecast item size */
+     }
+      .aqi-components-grid {
+         grid-template-columns: 1fr; /* Stack AQI components */
+     }
+}
