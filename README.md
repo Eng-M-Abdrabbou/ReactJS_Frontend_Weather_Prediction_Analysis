@@ -26,7 +26,7 @@ This repository contains the React frontend for the Weather Application. It prov
 ![Hourly Forecasting](/Images/HrForecast.png)
 
 ### Air Quality Index
-![Air Quality Index](/Images/AIQ.png)
+![Air Quality Index](/Images/AQI.png)
 
 
 
