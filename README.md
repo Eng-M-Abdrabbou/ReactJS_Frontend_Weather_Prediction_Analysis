@@ -44,7 +44,7 @@ This repository contains the React frontend for the Weather Application. It prov
 ## Prerequisites
 
 *   **Node.js and npm (or yarn):** Node.js version 16.x or later recommended. npm is included with Node.js.
-*   **Running Backend Service:** The corresponding [Weather Application Backend](<link-to-your-backend-repo>) must be running and accessible (typically on `http://localhost:8081`).
+*   **Running Backend Service:** The corresponding [Weather Application Backend](<link-to-your-backend-repo>) must be running and accessible (typically on `http://localhost:8081`) or however you configure it, check the backend repository for fruther insturctions.
 
 ## Setup
 
